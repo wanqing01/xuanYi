@@ -1,0 +1,261 @@
+.daily-page {
+  min-height: 100vh;
+  background: #0f0c1a;
+  padding: 40rpx 32rpx 120rpx;
+  color: #e2d9f3;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 48rpx;
+
+  .page-title {
+    display: block;
+    font-size: 48rpx;
+    font-weight: bold;
+    color: #e2d9f3;
+    margin-bottom: 12rpx;
+  }
+
+  .page-subtitle {
+    display: block;
+    font-size: 26rpx;
+    color: #6b7280;
+  }
+}
+
+.zodiac-grid {
+  .select-hint {
+    display: block;
+    text-align: center;
+    font-size: 28rpx;
+    color: #6b7280;
+    margin-bottom: 32rpx;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20rpx;
+  }
+}
+
+.zodiac-item {
+  background: #1e1a2e;
+  border: 2rpx solid rgba(167, 139, 250, 0.2);
+  border-radius: 20rpx;
+  padding: 32rpx 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+
+  &:active {
+    background: rgba(167, 139, 250, 0.1);
+    border-color: #a78bfa;
+  }
+
+  .zodiac-symbol {
+    font-size: 48rpx;
+  }
+
+  .zodiac-name {
+    font-size: 24rpx;
+    color: #e2d9f3;
+  }
+}
+
+.loading-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+
+  .loading-icon {
+    font-size: 100rpx;
+    margin-bottom: 32rpx;
+  }
+
+  .loading-text {
+    font-size: 28rpx;
+    color: #6b7280;
+  }
+}
+
+.fortune-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zodiac-info {
+  text-align: center;
+  margin-bottom: 40rpx;
+
+  .zodiac-big {
+    display: block;
+    font-size: 80rpx;
+    margin-bottom: 16rpx;
+  }
+
+  .zodiac-title {
+    display: block;
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #a78bfa;
+  }
+}
+
+.fortune-card {
+  width: 100%;
+  background: #1e1a2e;
+  border: 2rpx solid rgba(167, 139, 250, 0.2);
+  border-radius: 24rpx;
+  padding: 48rpx 40rpx;
+  margin-bottom: 32rpx;
+}
+
+.overall-score {
+  text-align: center;
+  padding-bottom: 40rpx;
+
+  .score-label {
+    display: block;
+    font-size: 24rpx;
+    color: #6b7280;
+    margin-bottom: 16rpx;
+  }
+
+  .score-value {
+    display: block;
+    font-size: 96rpx;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  .score-max {
+    display: block;
+    font-size: 22rpx;
+    color: #6b7280;
+    margin-top: 8rpx;
+  }
+}
+
+.score-divider {
+  height: 2rpx;
+  background: rgba(167, 139, 250, 0.1);
+  margin-bottom: 40rpx;
+}
+
+.score-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28rpx;
+  margin-bottom: 40rpx;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+
+  .score-icon {
+    font-size: 32rpx;
+    width: 40rpx;
+  }
+
+  .score-name {
+    font-size: 24rpx;
+    color: #6b7280;
+    width: 120rpx;
+  }
+
+  .score-bar-bg {
+    flex: 1;
+    height: 12rpx;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6rpx;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 6rpx;
+    transition: width 0.8s ease;
+
+    &.score-great { background: #4ade80; }
+    &.score-good { background: #a78bfa; }
+    &.score-warn { background: #facc15; }
+    &.score-bad { background: #f87171; }
+  }
+
+  .score-num {
+    font-size: 24rpx;
+    font-weight: 500;
+    width: 48rpx;
+    text-align: right;
+  }
+}
+
+.score-great { color: #4ade80; }
+.score-good { color: #a78bfa; }
+.score-warn { color: #facc15; }
+.score-bad { color: #f87171; }
+
+.lucky-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  padding: 32rpx 0;
+  border-top: 2rpx solid rgba(167, 139, 250, 0.1);
+  border-bottom: 2rpx solid rgba(167, 139, 250, 0.1);
+  margin-bottom: 32rpx;
+}
+
+.lucky-item {
+  text-align: center;
+
+  .lucky-label {
+    display: block;
+    font-size: 22rpx;
+    color: #6b7280;
+    margin-bottom: 12rpx;
+  }
+
+  .lucky-value {
+    display: block;
+    font-size: 28rpx;
+    font-weight: 500;
+    color: #e2d9f3;
+
+    &.primary {
+      font-size: 40rpx;
+      color: #a78bfa;
+      font-weight: bold;
+    }
+  }
+}
+
+.advice-area {
+  .advice-label {
+    display: block;
+    font-size: 24rpx;
+    color: #6b7280;
+    margin-bottom: 12rpx;
+  }
+
+  .advice-text {
+    display: block;
+    font-size: 28rpx;
+    color: #e2d9f3;
+    line-height: 1.7;
+  }
+}
+
+.btn-ghost {
+  background: transparent !important;
+  color: #6b7280 !important;
+  border: none !important;
+  font-size: 28rpx !important;
+  padding: 20rpx !important;
+}

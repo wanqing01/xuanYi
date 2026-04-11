@@ -1,0 +1,377 @@
+.tarot-page {
+  min-height: 100vh;
+  background: #0f0c1a;
+  padding: 40rpx 32rpx 120rpx;
+  color: #e2d9f3;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 48rpx;
+
+  .page-title {
+    display: block;
+    font-size: 48rpx;
+    font-weight: bold;
+    color: #e2d9f3;
+    margin-bottom: 12rpx;
+  }
+
+  .page-subtitle {
+    display: block;
+    font-size: 26rpx;
+    color: #6b7280;
+  }
+}
+
+.intro-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+
+  .card-preview {
+    display: flex;
+    gap: 20rpx;
+    margin-bottom: 48rpx;
+  }
+
+  .intro-text {
+    font-size: 28rpx;
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 48rpx;
+    line-height: 1.6;
+    max-width: 500rpx;
+  }
+}
+
+.card-back-preview {
+  width: 100rpx;
+  height: 150rpx;
+  background: linear-gradient(135deg, #1e1a2e, #2d2640);
+  border: 2rpx solid rgba(167, 139, 250, 0.4);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card-back-icon {
+    font-size: 40rpx;
+    color: rgba(167, 139, 250, 0.6);
+  }
+}
+
+.shuffling-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 0;
+
+  .shuffle-cards {
+    display: flex;
+    gap: 20rpx;
+    margin-bottom: 48rpx;
+  }
+
+  .shuffling-text {
+    font-size: 28rpx;
+    color: #6b7280;
+  }
+}
+
+.card-back-sm {
+  width: 80rpx;
+  height: 120rpx;
+  background: linear-gradient(135deg, #1e1a2e, #2d2640);
+  border: 2rpx solid rgba(167, 139, 250, 0.4);
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card-back-icon {
+    font-size: 32rpx;
+    color: rgba(167, 139, 250, 0.6);
+  }
+}
+
+.selecting-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.position-hint {
+  text-align: center;
+  margin-bottom: 40rpx;
+
+  .hint-sub {
+    display: block;
+    font-size: 24rpx;
+    color: #6b7280;
+    margin-bottom: 8rpx;
+  }
+
+  .hint-main {
+    display: block;
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #a78bfa;
+    margin-bottom: 8rpx;
+  }
+
+  .hint-desc {
+    display: block;
+    font-size: 24rpx;
+    color: #6b7280;
+  }
+}
+
+.selected-slots {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 48rpx;
+}
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+
+  .slot-label {
+    font-size: 22rpx;
+    color: #6b7280;
+  }
+
+  .slot-empty {
+    width: 100rpx;
+    height: 140rpx;
+    border: 2rpx dashed rgba(167, 139, 250, 0.3);
+    border-radius: 12rpx;
+  }
+}
+
+.card-front-sm {
+  width: 100rpx;
+  height: 140rpx;
+  background: linear-gradient(180deg, #1e1a2e, #2d2640);
+  border: 2rpx solid #a78bfa;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12rpx 8rpx;
+
+  .card-emoji {
+    font-size: 40rpx;
+  }
+
+  .card-name-sm {
+    font-size: 18rpx;
+    color: #e2d9f3;
+    text-align: center;
+  }
+}
+
+.deck-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16rpx;
+  max-width: 600rpx;
+}
+
+.card-back-pick {
+  width: 80rpx;
+  height: 120rpx;
+  background: linear-gradient(135deg, #1e1a2e, #2d2640);
+  border: 2rpx solid rgba(167, 139, 250, 0.4);
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    border-color: #a78bfa;
+    background: rgba(167, 139, 250, 0.1);
+    transform: translateY(-8rpx);
+  }
+
+  .card-back-icon {
+    font-size: 32rpx;
+    color: rgba(167, 139, 250, 0.6);
+  }
+}
+
+.result-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-cards {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 48rpx;
+}
+
+.result-card-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+
+  .result-pos-label {
+    font-size: 22rpx;
+    color: #6b7280;
+  }
+
+  .reversed-tag {
+    font-size: 20rpx;
+    color: #c084fc;
+  }
+}
+
+.card-front-lg {
+  width: 160rpx;
+  height: 220rpx;
+  background: linear-gradient(180deg, #1e1a2e, #2d2640);
+  border: 2rpx solid #a78bfa;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16rpx 12rpx;
+
+  &.reversed {
+    transform: rotate(180deg);
+  }
+
+  .card-num-sm {
+    font-size: 20rpx;
+    color: #6b7280;
+  }
+
+  .card-emoji-lg {
+    font-size: 64rpx;
+  }
+
+  .card-name-lg {
+    font-size: 22rpx;
+    color: #e2d9f3;
+    text-align: center;
+  }
+}
+
+.card-back-lg {
+  width: 160rpx;
+  height: 220rpx;
+  background: linear-gradient(135deg, #1e1a2e, #2d2640);
+  border: 2rpx solid rgba(167, 139, 250, 0.4);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card-back-icon {
+    font-size: 56rpx;
+    color: rgba(167, 139, 250, 0.5);
+  }
+}
+
+.interpretations {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.interp-card {
+  background: #1e1a2e;
+  border: 2rpx solid rgba(167, 139, 250, 0.2);
+  border-radius: 20rpx;
+  padding: 36rpx 32rpx;
+}
+
+.interp-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+
+  .interp-pos {
+    font-size: 26rpx;
+    color: #a78bfa;
+    font-weight: 500;
+  }
+
+  .interp-name {
+    font-size: 28rpx;
+    font-weight: bold;
+    color: #e2d9f3;
+  }
+
+  .reversed-badge {
+    font-size: 20rpx;
+    color: #c084fc;
+    background: rgba(192, 132, 252, 0.1);
+    padding: 4rpx 16rpx;
+    border-radius: 20rpx;
+  }
+}
+
+.interp-meaning {
+  display: block;
+  font-size: 26rpx;
+  color: #6b7280;
+  margin-bottom: 16rpx;
+  line-height: 1.6;
+}
+
+.interp-advice {
+  display: block;
+  font-size: 26rpx;
+  color: #e2d9f3;
+  line-height: 1.6;
+
+  .advice-prefix {
+    color: #a78bfa;
+  }
+}
+
+.summary-card {
+  background: rgba(167, 139, 250, 0.05);
+  border: 2rpx solid rgba(167, 139, 250, 0.2);
+  border-radius: 20rpx;
+  padding: 36rpx 32rpx;
+
+  .summary-title {
+    display: block;
+    font-size: 28rpx;
+    color: #a78bfa;
+    font-weight: 500;
+    margin-bottom: 16rpx;
+  }
+
+  .summary-text {
+    display: block;
+    font-size: 26rpx;
+    color: #e2d9f3;
+    line-height: 1.8;
+  }
+}
+
+.btn-primary {
+  width: 100%;
+  background: #a78bfa !important;
+  color: #fff !important;
+  border-radius: 16rpx !important;
+  font-size: 30rpx !important;
+  height: 88rpx !important;
+  line-height: 88rpx !important;
+  border: none !important;
+}

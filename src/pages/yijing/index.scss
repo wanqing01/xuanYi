@@ -1,0 +1,215 @@
+.yijing-page {
+  min-height: 100vh;
+  background: #0f0c1a;
+  padding: 40rpx 32rpx 120rpx;
+  color: #e2d9f3;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 60rpx;
+
+  .page-title {
+    display: block;
+    font-size: 48rpx;
+    font-weight: bold;
+    color: #e2d9f3;
+    margin-bottom: 12rpx;
+  }
+
+  .page-subtitle {
+    display: block;
+    font-size: 26rpx;
+    color: #6b7280;
+  }
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 0;
+
+  .instructions-icon {
+    font-size: 120rpx;
+    margin-bottom: 32rpx;
+  }
+
+  .instructions-text {
+    font-size: 28rpx;
+    color: #6b7280;
+    margin-bottom: 48rpx;
+  }
+}
+
+.shaking-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.yaos-display {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 48rpx;
+  width: 100%;
+  align-items: center;
+}
+
+.yao-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.yao-yang {
+  width: 180rpx;
+  height: 20rpx;
+  background: #a78bfa;
+  border-radius: 4rpx;
+}
+
+.yao-yin {
+  display: flex;
+  gap: 20rpx;
+
+  .yao-yin-left,
+  .yao-yin-right {
+    width: 80rpx;
+    height: 20rpx;
+    background: #a78bfa;
+    border-radius: 4rpx;
+  }
+}
+
+.yao-label {
+  font-size: 22rpx;
+  color: #6b7280;
+  width: 60rpx;
+}
+
+.shaking-icon {
+  margin: 32rpx 0;
+
+  .shaking-text {
+    font-size: 100rpx;
+  }
+}
+
+.progress-area {
+  text-align: center;
+
+  .progress-text {
+    display: block;
+    font-size: 28rpx;
+    color: #6b7280;
+    margin-bottom: 32rpx;
+  }
+
+  .progress-count {
+    color: #a78bfa;
+    font-weight: bold;
+    font-size: 36rpx;
+  }
+}
+
+.result-card {
+  background: #1e1a2e;
+  border: 2rpx solid rgba(167, 139, 250, 0.2);
+  border-radius: 24rpx;
+  padding: 48rpx 40rpx;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+
+  .hexagram-symbol {
+    display: block;
+    font-size: 80rpx;
+    margin-bottom: 16rpx;
+  }
+
+  .hexagram-name {
+    display: block;
+    font-size: 56rpx;
+    font-weight: bold;
+    color: #a78bfa;
+    margin-bottom: 20rpx;
+  }
+}
+
+.fortune-tag {
+  display: inline-block;
+  padding: 8rpx 24rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+
+  &.tag-great { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+  &.tag-good { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
+  &.tag-bad { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+  &.tag-neutral { background: rgba(107, 114, 128, 0.15); color: #9ca3af; }
+}
+
+.yaos-result {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 40rpx;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+  margin-bottom: 48rpx;
+}
+
+.detail-item {
+  .detail-label {
+    display: block;
+    font-size: 24rpx;
+    color: #6b7280;
+    margin-bottom: 8rpx;
+  }
+
+  .detail-value {
+    display: block;
+    font-size: 28rpx;
+    color: #e2d9f3;
+    line-height: 1.6;
+
+    &.primary {
+      color: #a78bfa;
+      font-weight: 500;
+    }
+  }
+}
+
+.btn-primary {
+  width: 100%;
+  background: #a78bfa !important;
+  color: #fff !important;
+  border-radius: 16rpx !important;
+  font-size: 30rpx !important;
+  height: 88rpx !important;
+  line-height: 88rpx !important;
+  border: none !important;
+}
+
+.btn-outline {
+  background: transparent !important;
+  border: 2rpx solid rgba(167, 139, 250, 0.5) !important;
+  color: #a78bfa !important;
+  border-radius: 16rpx !important;
+  font-size: 28rpx !important;
+  height: 80rpx !important;
+  line-height: 80rpx !important;
+  padding: 0 48rpx !important;
+}
