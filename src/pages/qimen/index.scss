@@ -82,26 +82,233 @@
 
 /* ── 起局动画 ── */
 .calculating-area {
-  display: flex; flex-direction: column; align-items: center; padding: 40rpx 0;
-  .calc-text { display: block; font-size: 28rpx; color: #6b7280; margin-top: 40rpx; margin-bottom: 12rpx; }
-  .calc-question { display: block; font-size: 28rpx; color: #a78bfa; }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0 40rpx;
+  gap: 48rpx;
 }
 
+.calc-question-banner {
+  text-align: center;
+  .calc-question-label {
+    display: block;
+    font-size: 22rpx;
+    color: #6b7280;
+    margin-bottom: 8rpx;
+    letter-spacing: 4rpx;
+  }
+  .calc-question-text {
+    display: block;
+    font-size: 36rpx;
+    font-weight: bold;
+    color: #e2d9f3;
+  }
+}
+
+/* 盘面容器（相对定位，用于叠加光环） */
+.calc-board {
+  position: relative;
+  width: 560rpx;
+  height: 560rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 旋转光环 */
+.calc-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2rpx solid transparent;
+  animation: spin 3s linear infinite;
+}
+
+.calc-ring-outer {
+  width: 540rpx;
+  height: 540rpx;
+  border-top-color: rgba(167, 139, 250, 0.6);
+  border-right-color: rgba(167, 139, 250, 0.2);
+  animation-duration: 4s;
+}
+
+.calc-ring-inner {
+  width: 460rpx;
+  height: 460rpx;
+  border-bottom-color: rgba(96, 165, 250, 0.5);
+  border-left-color: rgba(96, 165, 250, 0.15);
+  animation-direction: reverse;
+  animation-duration: 2.5s;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* 九宫格 */
 .calc-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8rpx;
-  width: 320rpx;
-  height: 320rpx;
+  gap: 6rpx;
+  width: 420rpx;
+  height: 420rpx;
+  position: relative;
+  z-index: 1;
 }
 
 .calc-cell {
-  background: #1e1a2e;
-  border: 2rpx solid rgba(167,139,250,0.2);
+  background: rgba(30, 26, 46, 0.9);
+  border: 2rpx solid rgba(167, 139, 250, 0.12);
   border-radius: 12rpx;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  .calc-palace { font-size: 18rpx; color: #a78bfa; }
-  .calc-dir { font-size: 16rpx; color: #4b5563; }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rpx;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+
+  /* 点亮前的占位 */
+  .calc-cell-placeholder {
+    font-size: 28rpx;
+    color: rgba(167, 139, 250, 0.2);
+  }
+
+  /* 点亮后的内容 */
+  .calc-cell-dir {
+    font-size: 16rpx;
+    color: #6b7280;
+  }
+  .calc-cell-star {
+    font-size: 18rpx;
+    color: #c4b5fd;
+    font-weight: bold;
+  }
+  .calc-cell-gate {
+    font-size: 16rpx;
+    color: #a78bfa;
+    &.empty { color: #374151; }
+  }
+
+  /* 点亮状态 */
+  &.lit {
+    background: rgba(167, 139, 250, 0.1);
+    border-color: rgba(167, 139, 250, 0.5);
+    animation: cellReveal 0.5s ease forwards;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(167,139,250,0.25) 0%, transparent 70%);
+      animation: cellGlow 1.5s ease-in-out infinite alternate;
+    }
+  }
+
+  /* 中宫特殊样式 */
+  &.center.lit {
+    background: rgba(167, 139, 250, 0.18);
+    border-color: #a78bfa;
+    box-shadow: 0 0 20rpx rgba(167, 139, 250, 0.4);
+  }
+}
+
+@keyframes cellReveal {
+  0%   { opacity: 0; transform: scale(0.7); }
+  60%  { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes cellGlow {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}
+
+/* 进度条 */
+.calc-progress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.calc-progress-bar {
+  width: 480rpx;
+  height: 6rpx;
+  background: rgba(167, 139, 250, 0.15);
+  border-radius: 3rpx;
+  overflow: hidden;
+}
+
+.calc-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa, #60a5fa);
+  border-radius: 3rpx;
+  transition: width 0.35s ease;
+  box-shadow: 0 0 8rpx rgba(167, 139, 250, 0.6);
+}
+
+.calc-phase-text {
+  font-size: 26rpx;
+  color: #a78bfa;
+  letter-spacing: 2rpx;
+  min-height: 40rpx;
+}
+
+/* 步骤指示器 */
+.calc-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  width: 100%;
+  padding: 0 20rpx;
+}
+
+.calc-step {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    .calc-step-dot {
+      background: #a78bfa;
+      box-shadow: 0 0 10rpx rgba(167, 139, 250, 0.8);
+      animation: dotPulse 0.8s ease-in-out infinite alternate;
+    }
+    .calc-step-label { color: #a78bfa; }
+  }
+
+  &.done {
+    opacity: 0.7;
+    .calc-step-dot { background: #4ade80; }
+    .calc-step-label { color: #4ade80; }
+  }
+}
+
+.calc-step-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #374151;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.calc-step-label {
+  font-size: 22rpx;
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+@keyframes dotPulse {
+  from { transform: scale(1); }
+  to   { transform: scale(1.4); }
 }
 
 /* ── 结果区 ── */

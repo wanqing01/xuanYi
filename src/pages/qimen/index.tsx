@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { View, Text, Button } from '@tarojs/components'
 import { castQimenChart } from '../../lib/qimen-engine'
 import { interpretChart } from '../../lib/qimen-interpret'
@@ -29,20 +29,50 @@ export default function QimenPage() {
   const [interp, setInterp] = useState<QimenInterpretation | null>(null)
   const [activeTab, setActiveTab] = useState<'board' | 'detail'>('board')
 
+  // 起局动画状态
+  const [calcPhase, setCalcPhase] = useState(0)   // 0-5 阶段
+  const [litPalaces, setLitPalaces] = useState<number[]>([])  // 已点亮的宫位
+
+  const CALC_PHASES = [
+    '观天象，定阴阳…',
+    '布地盘，安六仪…',
+    '飞九星，入九宫…',
+    '开八门，定吉凶…',
+    '落八神，护四方…',
+    '局成！',
+  ]
+
   // 当前时间信息
   const now = useMemo(() => new Date(), [])
   const currentChart = useMemo(() => castQimenChart(now), [now])
 
   const handleSelectQuestion = (q: string) => {
     setQuestion(q)
+    setCalcPhase(0)
+    setLitPalaces([])
     setStep('calculating')
+
+    // 阶段推进：每 350ms 一个阶段
+    const phaseTimers = [0, 350, 700, 1050, 1400, 1750].map((delay, i) =>
+      setTimeout(() => setCalcPhase(i), delay)
+    )
+
+    // 九宫逐格点亮：从中宫开始向外扩散
+    const lightOrder = [5, 1, 9, 3, 7, 4, 6, 2, 8]
+    lightOrder.forEach((palace, i) => {
+      setTimeout(() => {
+        setLitPalaces(prev => [...prev, palace])
+      }, 400 + i * 180)
+    })
+
+    // 完成后跳转结果
     setTimeout(() => {
       const c = castQimenChart(new Date())
-      const i = interpretChart(c, q)
+      const interp = interpretChart(c, q)
       setChart(c)
-      setInterp(i)
+      setInterp(interp)
       setStep('result')
-    }, 2000)
+    }, 2400)
   }
 
   const reset = () => {
@@ -51,6 +81,8 @@ export default function QimenPage() {
     setChart(null)
     setInterp(null)
     setActiveTab('board')
+    setCalcPhase(0)
+    setLitPalaces([])
   }
 
   const getNatureClass = (nature: string) => {
@@ -140,16 +172,63 @@ export default function QimenPage() {
       {/* Step 3: 起局动画 */}
       {step === 'calculating' && (
         <View className='calculating-area'>
-          <View className='calc-grid'>
-            {GRID_ORDER.map(p => (
-              <View key={p} className='calc-cell'>
-                <Text className='calc-palace'>{currentChart.palaces[p - 1]?.palaceName}</Text>
-                <Text className='calc-dir'>{currentChart.palaces[p - 1]?.direction}</Text>
+          {/* 问题标题 */}
+          <View className='calc-question-banner'>
+            <Text className='calc-question-label'>所问之事</Text>
+            <Text className='calc-question-text'>「{question}」</Text>
+          </View>
+
+          {/* 九宫动画盘 */}
+          <View className='calc-board'>
+            {/* 外圈旋转光环 */}
+            <View className='calc-ring calc-ring-outer' />
+            <View className='calc-ring calc-ring-inner' />
+
+            {/* 九宫格 */}
+            <View className='calc-grid'>
+              {GRID_ORDER.map((p, idx) => {
+                const pal = currentChart.palaces[p - 1]
+                const isLit = litPalaces.includes(p)
+                const isCenter = p === 5
+                return (
+                  <View key={p} className={`calc-cell ${isLit ? 'lit' : ''} ${isCenter ? 'center' : ''}`}>
+                    {isLit ? (
+                      <>
+                        <Text className='calc-cell-dir'>{pal?.direction}</Text>
+                        <Text className='calc-cell-star'>{pal?.star}</Text>
+                        <Text className={`calc-cell-gate ${pal?.gate ? '' : 'empty'}`}>
+                          {pal?.gate || '·'}
+                        </Text>
+                      </>
+                    ) : (
+                      <Text className='calc-cell-placeholder'>？</Text>
+                    )}
+                  </View>
+                )
+              })}
+            </View>
+          </View>
+
+          {/* 阶段进度条 */}
+          <View className='calc-progress'>
+            <View className='calc-progress-bar'>
+              <View
+                className='calc-progress-fill'
+                style={{ width: `${(calcPhase / 5) * 100}%` }}
+              />
+            </View>
+            <Text className='calc-phase-text'>{CALC_PHASES[calcPhase]}</Text>
+          </View>
+
+          {/* 阶段步骤指示 */}
+          <View className='calc-steps'>
+            {CALC_PHASES.slice(0, 5).map((label, i) => (
+              <View key={i} className={`calc-step ${calcPhase > i ? 'done' : calcPhase === i ? 'active' : ''}`}>
+                <View className='calc-step-dot' />
+                <Text className='calc-step-label'>{label.replace('…', '')}</Text>
               </View>
             ))}
           </View>
-          <Text className='calc-text'>正在起局排盘...</Text>
-          <Text className='calc-question'>{question}</Text>
         </View>
       )}
 
