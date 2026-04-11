@@ -376,3 +376,22 @@
     line-height: 1.6;
   }
 }
+
+/* ── 行星信息行 ── */
+.planet-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  margin-top: 16rpx;
+}
+
+.planet-item {
+  font-size: 22rpx;
+  color: #6b7280;
+}
+
+.planet-sep {
+  font-size: 20rpx;
+  color: #374151;
+}
