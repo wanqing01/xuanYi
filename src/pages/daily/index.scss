@@ -259,3 +259,120 @@
   font-size: 28rpx !important;
   padding: 20rpx !important;
 }
+
+/* ── 关键词标签 ── */
+.keywords-row {
+  display: flex;
+  justify-content: center;
+  gap: 16rpx;
+  margin: 20rpx 0 28rpx;
+}
+
+.keyword-tag {
+  background: rgba(167, 139, 250, 0.12);
+  border: 2rpx solid rgba(167, 139, 250, 0.3);
+  border-radius: 40rpx;
+  padding: 8rpx 24rpx;
+  font-size: 22rpx;
+  color: #a78bfa;
+}
+
+/* ── 评分块（含文字解读） ── */
+.score-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.score-text {
+  display: block;
+  font-size: 22rpx;
+  color: #9ca3af;
+  line-height: 1.6;
+  padding-left: 56rpx; /* 与icon+name对齐 */
+}
+
+/* ── 幸运信息（5格） ── */
+.lucky-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+  padding: 28rpx 0;
+  border-top: 2rpx solid rgba(167, 139, 250, 0.1);
+  border-bottom: 2rpx solid rgba(167, 139, 250, 0.1);
+  margin-bottom: 28rpx;
+
+  /* 第4、5项居中 */
+  .lucky-item:nth-child(4) { grid-column: 1 / 2; }
+  .lucky-item:nth-child(5) { grid-column: 2 / 3; }
+}
+
+/* ── 今日宜忌 ── */
+.yiji-area {
+  display: flex;
+  gap: 0;
+  margin-bottom: 28rpx;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.yiji-col {
+  flex: 1;
+  padding: 24rpx 20rpx;
+}
+
+.yiji-divider {
+  width: 2rpx;
+  background: rgba(167, 139, 250, 0.1);
+}
+
+.yiji-title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  &.yi { color: #4ade80; }
+  &.ji { color: #f87171; }
+}
+
+.yiji-item {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 10rpx;
+
+  .yiji-dot {
+    font-size: 20rpx;
+    &.yi { color: #4ade80; }
+    &.ji { color: #f87171; }
+  }
+
+  .yiji-text {
+    font-size: 22rpx;
+    color: #d1d5db;
+  }
+}
+
+/* ── 注意事项 ── */
+.caution-area {
+  background: rgba(248, 113, 113, 0.06);
+  border: 2rpx solid rgba(248, 113, 113, 0.2);
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  margin-bottom: 28rpx;
+
+  .caution-label {
+    display: block;
+    font-size: 22rpx;
+    color: #f87171;
+    margin-bottom: 8rpx;
+  }
+
+  .caution-text {
+    display: block;
+    font-size: 24rpx;
+    color: #fca5a5;
+    line-height: 1.6;
+  }
+}
