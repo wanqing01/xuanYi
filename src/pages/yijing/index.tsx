@@ -38,9 +38,7 @@ export default function YijingPage() {
     if (isShaking || yaos.length >= 6) return
     setIsShaking(true)
     setShowInstructions(false)
-
     Taro.vibrateShort({ type: 'medium' }).catch(() => {})
-
     setTimeout(() => {
       const newYao = generateYao()
       setYaos(prev => {
@@ -92,7 +90,8 @@ export default function YijingPage() {
       {showInstructions && !result && (
         <View className='instructions'>
           <Text className='instructions-icon'>☯</Text>
-          <Text className='instructions-text'>点击下方按钮开始占卜</Text>
+          <Text className='instructions-text'>静心凝神，心中默想所问之事</Text>
+          <Text className='instructions-sub'>点击下方按钮，连续摇卦六次</Text>
           <Button className='btn-primary' onClick={handleShake}>开始摇卦</Button>
         </View>
       )}
@@ -102,13 +101,11 @@ export default function YijingPage() {
           <View className='yaos-display'>
             {[...yaos].reverse().map((yao, i) => renderYao(yao, yaos.length - 1 - i))}
           </View>
-
           {isShaking && (
             <View className='shaking-icon'>
               <Text className='shaking-text'>☯</Text>
             </View>
           )}
-
           <View className='progress-area'>
             <Text className='progress-text'>
               已摇 <Text className='progress-count'>{yaos.length}</Text> / 6 次
@@ -122,6 +119,7 @@ export default function YijingPage() {
 
       {result && (
         <View className='result-card'>
+          {/* 卦名与吉凶 */}
           <View className='result-header'>
             <Text className='hexagram-symbol'>{result.hexagram.symbol}</Text>
             <Text className='hexagram-name'>{result.hexagram.name}卦</Text>
@@ -130,22 +128,73 @@ export default function YijingPage() {
             </View>
           </View>
 
+          {/* 爻象 */}
           <View className='yaos-result'>
             {[...result.yaos].reverse().map((yao, i) => renderYao(yao, result.yaos.length - 1 - i))}
           </View>
 
-          <View className='result-details'>
-            <View className='detail-item'>
-              <Text className='detail-label'>卦辞</Text>
-              <Text className='detail-value'>{result.hexagram.meaning}</Text>
+          {/* 卦辞 */}
+          <View className='section'>
+            <Text className='section-title'>卦辞</Text>
+            <Text className='section-quote'>「{result.hexagram.meaning}」</Text>
+          </View>
+
+          {/* 卦象详解 */}
+          <View className='section'>
+            <Text className='section-title'>卦象解析</Text>
+            <Text className='section-body'>{result.hexagram.description}</Text>
+          </View>
+
+          {/* 四维解读 */}
+          <View className='section'>
+            <Text className='section-title'>详细解读</Text>
+            <View className='dimension-list'>
+              <View className='dimension-item'>
+                <View className='dimension-header'>
+                  <Text className='dimension-icon'>♡</Text>
+                  <Text className='dimension-name'>感情</Text>
+                </View>
+                <Text className='dimension-text'>{result.hexagram.love}</Text>
+              </View>
+              <View className='dimension-item'>
+                <View className='dimension-header'>
+                  <Text className='dimension-icon'>◆</Text>
+                  <Text className='dimension-name'>事业</Text>
+                </View>
+                <Text className='dimension-text'>{result.hexagram.career}</Text>
+              </View>
+              <View className='dimension-item'>
+                <View className='dimension-header'>
+                  <Text className='dimension-icon'>◈</Text>
+                  <Text className='dimension-name'>财运</Text>
+                </View>
+                <Text className='dimension-text'>{result.hexagram.wealth}</Text>
+              </View>
+              <View className='dimension-item'>
+                <View className='dimension-header'>
+                  <Text className='dimension-icon'>❖</Text>
+                  <Text className='dimension-name'>健康</Text>
+                </View>
+                <Text className='dimension-text'>{result.hexagram.health}</Text>
+              </View>
             </View>
-            <View className='detail-item'>
-              <Text className='detail-label'>五行属性</Text>
-              <Text className='detail-value'>{result.hexagram.element}</Text>
+          </View>
+
+          {/* 占卜建议 */}
+          <View className='advice-box'>
+            <Text className='advice-label'>占卜建议</Text>
+            <Text className='advice-text'>{result.hexagram.advice}</Text>
+          </View>
+
+          {/* 五行 */}
+          <View className='meta-row'>
+            <View className='meta-item'>
+              <Text className='meta-label'>五行</Text>
+              <Text className='meta-value'>{result.hexagram.element}</Text>
             </View>
-            <View className='detail-item'>
-              <Text className='detail-label'>占卜建议</Text>
-              <Text className='detail-value primary'>{result.hexagram.advice}</Text>
+            <View className='meta-item'>
+              <Text className='meta-label'>卦序</Text>
+              <Text className='meta-value'>第{hexagrams.findIndex(h => h.name === result.hexagram.name) + 1}卦</Text>
             </View>
           </View>
 

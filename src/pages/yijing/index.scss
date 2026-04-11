@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80rpx 0;
+  padding: 60rpx 0;
 
   .instructions-icon {
     font-size: 120rpx;
@@ -36,7 +36,13 @@
   }
 
   .instructions-text {
-    font-size: 28rpx;
+    font-size: 30rpx;
+    color: #e2d9f3;
+    margin-bottom: 12rpx;
+  }
+
+  .instructions-sub {
+    font-size: 24rpx;
     color: #6b7280;
     margin-bottom: 48rpx;
   }
@@ -115,16 +121,19 @@
   }
 }
 
+/* 结果卡片 */
 .result-card {
   background: #1e1a2e;
   border: 2rpx solid rgba(167, 139, 250, 0.2);
   border-radius: 24rpx;
   padding: 48rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
 }
 
 .result-header {
   text-align: center;
-  margin-bottom: 40rpx;
 
   .hexagram-symbol {
     display: block;
@@ -143,13 +152,13 @@
 
 .fortune-tag {
   display: inline-block;
-  padding: 8rpx 24rpx;
+  padding: 8rpx 28rpx;
   border-radius: 40rpx;
-  font-size: 24rpx;
+  font-size: 26rpx;
 
   &.tag-great { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
-  &.tag-good { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
-  &.tag-bad { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+  &.tag-good  { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
+  &.tag-bad   { background: rgba(248, 113, 113, 0.15); color: #f87171; }
   &.tag-neutral { background: rgba(107, 114, 128, 0.15); color: #9ca3af; }
 }
 
@@ -161,34 +170,123 @@
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16rpx;
   padding: 32rpx;
-  margin-bottom: 40rpx;
 }
 
-.result-details {
-  display: flex;
-  flex-direction: column;
-  gap: 32rpx;
-  margin-bottom: 48rpx;
-}
-
-.detail-item {
-  .detail-label {
+/* 通用 section */
+.section {
+  .section-title {
     display: block;
     font-size: 24rpx;
+    color: #6b7280;
+    margin-bottom: 16rpx;
+    letter-spacing: 2rpx;
+  }
+
+  .section-quote {
+    display: block;
+    font-size: 30rpx;
+    color: #a78bfa;
+    font-weight: 500;
+    line-height: 1.7;
+    letter-spacing: 1rpx;
+  }
+
+  .section-body {
+    display: block;
+    font-size: 28rpx;
+    color: #c4b5fd;
+    line-height: 1.8;
+  }
+}
+
+/* 四维解读 */
+.dimension-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.dimension-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4rpx solid rgba(167, 139, 250, 0.4);
+  border-radius: 0 12rpx 12rpx 0;
+  padding: 24rpx 28rpx;
+}
+
+.dimension-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+
+  .dimension-icon {
+    font-size: 28rpx;
+    color: #a78bfa;
+  }
+
+  .dimension-name {
+    font-size: 26rpx;
+    font-weight: bold;
+    color: #a78bfa;
+  }
+}
+
+.dimension-text {
+  display: block;
+  font-size: 26rpx;
+  color: #d1d5db;
+  line-height: 1.7;
+}
+
+/* 建议框 */
+.advice-box {
+  background: rgba(167, 139, 250, 0.08);
+  border: 2rpx solid rgba(167, 139, 250, 0.3);
+  border-radius: 16rpx;
+  padding: 32rpx;
+
+  .advice-label {
+    display: block;
+    font-size: 22rpx;
+    color: #a78bfa;
+    margin-bottom: 12rpx;
+    letter-spacing: 2rpx;
+  }
+
+  .advice-text {
+    display: block;
+    font-size: 28rpx;
+    color: #e2d9f3;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+}
+
+/* 元信息行 */
+.meta-row {
+  display: flex;
+  gap: 24rpx;
+}
+
+.meta-item {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  text-align: center;
+
+  .meta-label {
+    display: block;
+    font-size: 22rpx;
     color: #6b7280;
     margin-bottom: 8rpx;
   }
 
-  .detail-value {
+  .meta-value {
     display: block;
     font-size: 28rpx;
     color: #e2d9f3;
-    line-height: 1.6;
-
-    &.primary {
-      color: #a78bfa;
-      font-weight: 500;
-    }
+    font-weight: 500;
   }
 }
 
