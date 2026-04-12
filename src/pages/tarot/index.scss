@@ -66,18 +66,141 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80rpx 0;
+  padding: 60rpx 0;
+  gap: 60rpx;
+  min-height: 70vh;
+  justify-content: center;
+}
 
-  .shuffle-cards {
-    display: flex;
-    gap: 20rpx;
-    margin-bottom: 48rpx;
-  }
+/* 光晕背景 */
+.shuffle-glow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167,139,250,0.15) 0%, transparent 70%);
+  transition: all 0.6s ease;
+  pointer-events: none;
 
-  .shuffling-text {
-    font-size: 28rpx;
-    color: #6b7280;
+  &.phase-1 { background: radial-gradient(circle, rgba(167,139,250,0.25) 0%, transparent 70%); transform: translate(-50%, -50%) scale(1.2); }
+  &.phase-2 { background: radial-gradient(circle, rgba(96,165,250,0.3) 0%, rgba(167,139,250,0.15) 40%, transparent 70%); transform: translate(-50%, -50%) scale(1.5); }
+  &.phase-3 { background: radial-gradient(circle, rgba(167,139,250,0.4) 0%, transparent 60%); transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* 舞台容器 */
+.shuffle-stage {
+  position: relative;
+  width: 500rpx;
+  height: 500rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 单张牌基础样式 */
+.shuffle-card {
+  position: absolute;
+  width: 100rpx;
+  height: 150rpx;
+  background: linear-gradient(135deg, #1e1a2e, #2d2640);
+  border: 2rpx solid rgba(167,139,250,0.5);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  .shuffle-card-icon {
+    font-size: 36rpx;
+    color: rgba(167,139,250,0.7);
   }
+}
+
+/* Phase 0: 初始叠放在中心 */
+.shuffle-card.phase-0 { transform: translate(0, 0) rotate(0deg); opacity: 0.8; }
+
+/* Phase 1: 散开飞出 */
+.shuffle-card-0.phase-1 { transform: translate(-180rpx, -160rpx) rotate(-25deg); opacity: 1; }
+.shuffle-card-1.phase-1 { transform: translate(0, -200rpx) rotate(10deg); opacity: 1; }
+.shuffle-card-2.phase-1 { transform: translate(180rpx, -140rpx) rotate(30deg); opacity: 1; }
+.shuffle-card-3.phase-1 { transform: translate(200rpx, 60rpx) rotate(-15deg); opacity: 1; }
+.shuffle-card-4.phase-1 { transform: translate(120rpx, 180rpx) rotate(20deg); opacity: 1; }
+.shuffle-card-5.phase-1 { transform: translate(-120rpx, 180rpx) rotate(-20deg); opacity: 1; }
+.shuffle-card-6.phase-1 { transform: translate(-200rpx, 60rpx) rotate(15deg); opacity: 1; }
+
+/* Phase 2: 旋转混洗 */
+.shuffle-card-0.phase-2 { transform: translate(-160rpx, -120rpx) rotate(360deg); animation: orbit0 0.8s ease-in-out; }
+.shuffle-card-1.phase-2 { transform: translate(60rpx, -190rpx) rotate(-360deg); animation: orbit1 0.8s ease-in-out; }
+.shuffle-card-2.phase-2 { transform: translate(190rpx, -60rpx) rotate(360deg); animation: orbit2 0.8s ease-in-out; }
+.shuffle-card-3.phase-2 { transform: translate(160rpx, 140rpx) rotate(-360deg); animation: orbit3 0.8s ease-in-out; }
+.shuffle-card-4.phase-2 { transform: translate(-60rpx, 190rpx) rotate(360deg); animation: orbit4 0.8s ease-in-out; }
+.shuffle-card-5.phase-2 { transform: translate(-190rpx, 60rpx) rotate(-360deg); animation: orbit5 0.8s ease-in-out; }
+.shuffle-card-6.phase-2 { transform: translate(-80rpx, -80rpx) rotate(180deg); animation: orbit6 0.8s ease-in-out; }
+
+@keyframes orbit0 { 0%{transform:translate(-180rpx,-160rpx) rotate(-25deg)} 50%{transform:translate(100rpx,-100rpx) rotate(180deg)} 100%{transform:translate(-160rpx,-120rpx) rotate(360deg)} }
+@keyframes orbit1 { 0%{transform:translate(0,-200rpx) rotate(10deg)} 50%{transform:translate(-100rpx,100rpx) rotate(-180deg)} 100%{transform:translate(60rpx,-190rpx) rotate(-360deg)} }
+@keyframes orbit2 { 0%{transform:translate(180rpx,-140rpx) rotate(30deg)} 50%{transform:translate(-80rpx,80rpx) rotate(200deg)} 100%{transform:translate(190rpx,-60rpx) rotate(360deg)} }
+@keyframes orbit3 { 0%{transform:translate(200rpx,60rpx) rotate(-15deg)} 50%{transform:translate(-120rpx,-60rpx) rotate(-200deg)} 100%{transform:translate(160rpx,140rpx) rotate(-360deg)} }
+@keyframes orbit4 { 0%{transform:translate(120rpx,180rpx) rotate(20deg)} 50%{transform:translate(80rpx,-120rpx) rotate(200deg)} 100%{transform:translate(-60rpx,190rpx) rotate(360deg)} }
+@keyframes orbit5 { 0%{transform:translate(-120rpx,180rpx) rotate(-20deg)} 50%{transform:translate(120rpx,60rpx) rotate(-200deg)} 100%{transform:translate(-190rpx,60rpx) rotate(-360deg)} }
+@keyframes orbit6 { 0%{transform:translate(-200rpx,60rpx) rotate(15deg)} 50%{transform:translate(60rpx,-60rpx) rotate(200deg)} 100%{transform:translate(-80rpx,-80rpx) rotate(180deg)} }
+
+/* Phase 3: 聚拢归位 */
+.shuffle-card-0.phase-3 { transform: translate(-4rpx, -6rpx) rotate(-3deg); box-shadow: 0 0 30rpx rgba(167,139,250,0.4); }
+.shuffle-card-1.phase-3 { transform: translate(2rpx, -2rpx) rotate(1deg); }
+.shuffle-card-2.phase-3 { transform: translate(-2rpx, 4rpx) rotate(-1deg); }
+.shuffle-card-3.phase-3 { transform: translate(4rpx, 2rpx) rotate(2deg); }
+.shuffle-card-4.phase-3 { transform: translate(-3rpx, -3rpx) rotate(-2deg); }
+.shuffle-card-5.phase-3 { transform: translate(3rpx, 3rpx) rotate(1.5deg); }
+.shuffle-card-6.phase-3 { transform: translate(0, 0) rotate(0deg); box-shadow: 0 0 40rpx rgba(167,139,250,0.6); }
+
+/* 中心符文 */
+.shuffle-rune {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 2rpx solid rgba(167,139,250,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease;
+  z-index: 10;
+
+  .shuffle-rune-text { font-size: 56rpx; color: rgba(167,139,250,0.5); }
+
+  &.phase-1 { border-color: rgba(167,139,250,0.6); animation: runeRotate 1s linear infinite; .shuffle-rune-text { color: #a78bfa; } }
+  &.phase-2 { border-color: #a78bfa; animation: runeRotate 0.5s linear infinite; box-shadow: 0 0 30rpx rgba(167,139,250,0.5); .shuffle-rune-text { color: #c4b5fd; font-size: 64rpx; } }
+  &.phase-3 { border-color: #a78bfa; box-shadow: 0 0 50rpx rgba(167,139,250,0.8); animation: runePulse 0.8s ease-in-out infinite alternate; .shuffle-rune-text { color: #e2d9f3; font-size: 72rpx; } }
+}
+
+@keyframes runeRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes runePulse { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+/* 进度指示 */
+.shuffle-progress { display: flex; flex-direction: column; align-items: center; gap: 20rpx; }
+
+.shuffle-dots { display: flex; gap: 16rpx; }
+
+.shuffle-dot {
+  width: 12rpx; height: 12rpx; border-radius: 50%;
+  background: rgba(167,139,250,0.2);
+  transition: all 0.3s ease;
+  &.active { background: #a78bfa; box-shadow: 0 0 10rpx rgba(167,139,250,0.8); animation: dotPulse 0.6s ease-in-out infinite alternate; }
+  &.done { background: #4ade80; }
+}
+
+@keyframes dotPulse { from { transform: scale(1); } to { transform: scale(1.5); } }
+
+.shuffling-text {
+  display: block;
+  font-size: 28rpx;
+  color: #a78bfa;
+  letter-spacing: 2rpx;
+  min-height: 40rpx;
 }
 
 .card-back-sm {
@@ -374,4 +497,103 @@
   height: 88rpx !important;
   line-height: 88rpx !important;
   border: none !important;
+}
+
+/* ── 解读卡片升级样式 ── */
+.interp-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.interp-meta {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 12rpx;
+
+  .meta-tag {
+    font-size: 20rpx;
+    color: #6b7280;
+  }
+}
+
+.keywords-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.keyword-chip {
+  background: rgba(167, 139, 250, 0.1);
+  border: 2rpx solid rgba(167, 139, 250, 0.3);
+  border-radius: 40rpx;
+  padding: 6rpx 20rpx;
+  font-size: 20rpx;
+  color: #a78bfa;
+}
+
+/* 四维解读 */
+.dimension-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin: 20rpx 0;
+}
+
+.dim-item {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4rpx solid rgba(167, 139, 250, 0.3);
+  border-radius: 0 12rpx 12rpx 0;
+  padding: 16rpx 20rpx;
+}
+
+.dim-header {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  margin-bottom: 8rpx;
+
+  .dim-icon { font-size: 24rpx; color: #a78bfa; }
+  .dim-label { font-size: 22rpx; font-weight: bold; color: #a78bfa; }
+}
+
+.dim-text {
+  display: block;
+  font-size: 24rpx;
+  color: #d1d5db;
+  line-height: 1.7;
+}
+
+/* 建议框 */
+.advice-box {
+  background: rgba(167, 139, 250, 0.06);
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  margin-top: 16rpx;
+
+  .advice-prefix {
+    display: block;
+    font-size: 20rpx;
+    color: #a78bfa;
+    margin-bottom: 8rpx;
+  }
+
+  .advice-text {
+    display: block;
+    font-size: 26rpx;
+    color: #e2d9f3;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+}
+
+/* 综合解读升级 */
+.summary-text {
+  display: block;
+  font-size: 26rpx;
+  color: #e2d9f3;
+  line-height: 1.9;
+  white-space: pre-line;
 }
