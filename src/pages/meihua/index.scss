@@ -1,0 +1,191 @@
+.meihua-page {
+  min-height: 100vh;
+  background: #0f0c1a;
+  padding: 40rpx 32rpx 120rpx;
+  color: #e2d9f3;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 56rpx;
+  .page-title { display: block; font-size: 48rpx; font-weight: bold; color: #e2d9f3; margin-bottom: 12rpx; }
+  .page-subtitle { display: block; font-size: 26rpx; color: #6b7280; letter-spacing: 2rpx; }
+}
+
+/* ── 选择起卦方式 ── */
+.select-area { display: flex; flex-direction: column; align-items: center; }
+.select-hint { display: block; font-size: 28rpx; color: #6b7280; margin-bottom: 36rpx; }
+
+.method-cards { display: flex; flex-direction: column; gap: 24rpx; width: 100%; }
+
+.method-card {
+  background: #1e1a2e;
+  border: 2rpx solid rgba(167,139,250,0.2);
+  border-radius: 24rpx;
+  padding: 40rpx 36rpx;
+  display: flex; flex-direction: column; gap: 12rpx;
+  &:active { background: rgba(167,139,250,0.1); border-color: #a78bfa; }
+
+  .method-icon { font-size: 48rpx; }
+  .method-title { font-size: 32rpx; font-weight: bold; color: #a78bfa; }
+  .method-desc { font-size: 26rpx; color: #9ca3af; line-height: 1.6; }
+  .method-sub { font-size: 22rpx; color: #6b7280; }
+  .method-time { display: flex; gap: 16rpx; font-size: 22rpx; color: #6b7280; }
+}
+
+/* ── 数字输入 ── */
+.input-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36rpx;
+}
+
+.input-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #a78bfa;
+}
+
+.input-hint {
+  font-size: 26rpx;
+  color: #6b7280;
+  text-align: center;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.number-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  width: 100%;
+}
+
+.num-input-wrap {
+  width: 100%;
+  .num-label { display: block; font-size: 24rpx; color: #9ca3af; margin-bottom: 12rpx; }
+}
+
+.num-input-box {
+  width: 100%;
+  height: 96rpx;
+  background: #1e1a2e;
+  border: 2rpx solid rgba(167,139,250,0.3);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.num-input {
+  flex: 1;
+  height: 96rpx;
+  font-size: 36rpx;
+  color: #e2d9f3;
+  background: transparent;
+}
+
+/* ── 结果 ── */
+.result-area { display: flex; flex-direction: column; gap: 28rpx; }
+
+.result-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(167,139,250,0.06);
+  border-radius: 16rpx; padding: 20rpx 28rpx;
+  .meta-method { font-size: 26rpx; color: #a78bfa; font-weight: 500; }
+  .meta-yao { font-size: 24rpx; color: #6b7280; }
+}
+
+/* Tab */
+.tab-bar {
+  display: flex; background: #1e1a2e; border-radius: 16rpx; padding: 8rpx; gap: 8rpx;
+}
+.tab-item {
+  flex: 1; text-align: center; padding: 16rpx 8rpx; border-radius: 12rpx;
+  &.active { background: rgba(167,139,250,0.15); }
+  .tab-label { display: block; font-size: 24rpx; color: #6b7280; margin-bottom: 4rpx; }
+  &.active .tab-label { color: #a78bfa; font-weight: bold; }
+  .tab-sub { display: block; font-size: 20rpx; color: #4b5563; }
+  &.active .tab-sub { color: #c4b5fd; }
+}
+
+/* 卦象展示 */
+.hex-detail {
+  background: #1e1a2e;
+  border: 2rpx solid rgba(167,139,250,0.2);
+  border-radius: 24rpx;
+  padding: 40rpx 36rpx;
+  display: flex; flex-direction: column; gap: 28rpx;
+}
+
+.trigram-display {
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.trigram-col {
+  display: flex; flex-direction: column; align-items: center; gap: 8rpx;
+  .trigram-sym { font-size: 56rpx; color: #a78bfa; }
+  .trigram-nm { font-size: 26rpx; font-weight: bold; color: #e2d9f3; }
+  .trigram-nat { font-size: 20rpx; color: #6b7280; }
+}
+
+.trigram-center {
+  .hex-name { font-size: 40rpx; font-weight: bold; color: #c4b5fd; }
+}
+
+.fortune-tag {
+  display: inline-block; padding: 8rpx 28rpx; border-radius: 40rpx; font-size: 26rpx; align-self: center;
+  &.tag-great { background: rgba(74,222,128,0.15); color: #4ade80; }
+  &.tag-good  { background: rgba(167,139,250,0.15); color: #a78bfa; }
+  &.tag-bad   { background: rgba(248,113,113,0.15); color: #f87171; }
+  &.tag-neutral { background: rgba(107,114,128,0.15); color: #9ca3af; }
+}
+
+.hex-sections { display: flex; flex-direction: column; gap: 24rpx; }
+
+.hex-section {
+  .section-label { display: block; font-size: 22rpx; color: #6b7280; margin-bottom: 10rpx; }
+  .section-quote { display: block; font-size: 28rpx; color: #a78bfa; font-weight: 500; line-height: 1.7; }
+  .section-body  { display: block; font-size: 26rpx; color: #c4b5fd; line-height: 1.8; }
+}
+
+.hex-dims { display: flex; flex-direction: column; gap: 20rpx; }
+
+.dim-item {
+  background: rgba(255,255,255,0.03);
+  border-left: 4rpx solid rgba(167,139,250,0.3);
+  border-radius: 0 12rpx 12rpx 0;
+  padding: 20rpx 24rpx;
+}
+.dim-header { display: flex; align-items: center; gap: 10rpx; margin-bottom: 8rpx; }
+.dim-icon { font-size: 26rpx; color: #a78bfa; }
+.dim-label { font-size: 22rpx; font-weight: bold; color: #a78bfa; }
+.dim-text { display: block; font-size: 24rpx; color: #d1d5db; line-height: 1.7; }
+
+.advice-box {
+  background: rgba(167,139,250,0.06); border-radius: 12rpx; padding: 24rpx;
+  .advice-label { display: block; font-size: 20rpx; color: #a78bfa; margin-bottom: 10rpx; }
+  .advice-text  { display: block; font-size: 26rpx; color: #e2d9f3; line-height: 1.7; font-weight: 500; }
+}
+
+/* 综合解读 */
+.analysis-card {
+  background: rgba(167,139,250,0.05);
+  border: 2rpx solid rgba(167,139,250,0.2);
+  border-radius: 20rpx; padding: 36rpx;
+  .analysis-title { display: block; font-size: 28rpx; font-weight: bold; color: #a78bfa; margin-bottom: 20rpx; }
+  .analysis-body  { display: block; font-size: 26rpx; color: #d1d5db; line-height: 1.9; white-space: pre-line; }
+}
+
+/* 按钮 */
+.btn-primary {
+  width: 100%; background: #a78bfa !important; color: #fff !important;
+  border-radius: 16rpx !important; font-size: 30rpx !important;
+  height: 88rpx !important; line-height: 88rpx !important; border: none !important;
+}
+.btn-ghost {
+  background: transparent !important; color: #6b7280 !important;
+  border: none !important; font-size: 28rpx !important; padding: 20rpx !important;
+}

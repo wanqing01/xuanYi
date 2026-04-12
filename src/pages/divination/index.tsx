@@ -15,6 +15,17 @@ const TOOLS = [
     path: '/pages/yijing/index',
   },
   {
+    id: 'meihua',
+    title: '梅花易数',
+    subtitle: '时间起卦 · 本互变三卦',
+    desc: '以时间或数字起卦，推演本卦、互卦、变卦，洞察事情的起因、过程与结果',
+    icon: '✿',
+    color: '#f472b6',
+    bg: 'rgba(244,114,182,0.08)',
+    border: 'rgba(244,114,182,0.3)',
+    path: '/pages/meihua/index',
+  },
+  {
     id: 'qimen',
     title: '奇门遁甲',
     subtitle: '时家奇门 · 九宫排盘',
@@ -69,7 +80,7 @@ export default function DivinationPage() {
         <Text className='coming-title'>更多占卜方式</Text>
         <Text className='coming-desc'>梅花易数、紫微斗数等更多法门即将上线</Text>
         <View className='coming-dots'>
-          {['梅花易数', '紫微斗数', '铁板神数'].map(name => (
+          {['紫微斗数', '铁板神数', '太乙神数'].map(name => (
             <View key={name} className='coming-dot-item'>
               <View className='coming-dot' />
               <Text className='coming-dot-label'>{name}</Text>

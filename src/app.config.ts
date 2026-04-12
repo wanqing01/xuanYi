@@ -6,6 +6,7 @@ export default defineAppConfig({
     'pages/daily/index',
     'pages/tarot/index',
     'pages/qimen/index',
+    'pages/meihua/index',
   ],
   window: {
     backgroundTextStyle: 'dark',
