@@ -311,3 +311,23 @@
   line-height: 80rpx !important;
   padding: 0 48rpx !important;
 }
+
+/* 上下卦信息 */
+.trigram-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24rpx;
+  margin: 16rpx 0;
+}
+
+.trigram-item {
+  text-align: center;
+  .trigram-label { display: block; font-size: 20rpx; color: #6b7280; margin-bottom: 6rpx; }
+  .trigram-value { display: block; font-size: 32rpx; font-weight: bold; color: #c4b5fd; }
+}
+
+.trigram-sep {
+  font-size: 28rpx;
+  color: rgba(167, 139, 250, 0.4);
+}

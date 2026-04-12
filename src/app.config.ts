@@ -18,7 +18,7 @@ export default defineAppConfig({
     backgroundColor: '#1e1a2e',
     borderStyle: 'black',
     list: [
-      { pagePath: 'pages/yijing/index', text: '易经' },
+      { pagePath: 'pages/yijing/index', text: '六爻' },
       { pagePath: 'pages/daily/index', text: '运势' },
       { pagePath: 'pages/tarot/index', text: '塔罗' },
       { pagePath: 'pages/qimen/index', text: '奇门' },
