@@ -1,6 +1,7 @@
 export default defineAppConfig({
   pages: [
     'pages/index/index',
+    'pages/divination/index',
     'pages/yijing/index',
     'pages/daily/index',
     'pages/tarot/index',
@@ -18,10 +19,9 @@ export default defineAppConfig({
     backgroundColor: '#1e1a2e',
     borderStyle: 'black',
     list: [
-      { pagePath: 'pages/yijing/index', text: '六爻' },
+      { pagePath: 'pages/divination/index', text: '占卜' },
       { pagePath: 'pages/daily/index', text: '运势' },
       { pagePath: 'pages/tarot/index', text: '塔罗' },
-      { pagePath: 'pages/qimen/index', text: '奇门' },
     ],
   },
 })

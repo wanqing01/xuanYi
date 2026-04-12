@@ -1,0 +1,150 @@
+.divination-page {
+  min-height: 100vh;
+  background: #0f0c1a;
+  padding: 40rpx 32rpx 120rpx;
+  color: #e2d9f3;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 60rpx;
+
+  .page-title {
+    display: block;
+    font-size: 48rpx;
+    font-weight: bold;
+    color: #e2d9f3;
+    margin-bottom: 12rpx;
+  }
+
+  .page-subtitle {
+    display: block;
+    font-size: 26rpx;
+    color: #6b7280;
+    letter-spacing: 2rpx;
+  }
+}
+
+.tools-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  margin-bottom: 60rpx;
+}
+
+.tool-card {
+  display: flex;
+  align-items: center;
+  gap: 28rpx;
+  border: 2rpx solid;
+  border-radius: 24rpx;
+  padding: 36rpx 32rpx;
+  transition: opacity 0.15s;
+
+  &:active { opacity: 0.75; }
+}
+
+.tool-left {
+  flex-shrink: 0;
+}
+
+.tool-icon-wrap {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  border: 2rpx solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+}
+
+.tool-icon {
+  font-size: 44rpx;
+}
+
+.tool-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tool-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+
+  .tool-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .tool-subtitle {
+    font-size: 20rpx;
+    color: #6b7280;
+  }
+}
+
+.tool-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #9ca3af;
+  line-height: 1.7;
+}
+
+.tool-arrow {
+  font-size: 48rpx;
+  color: #4b5563;
+  flex-shrink: 0;
+  margin-left: 8rpx;
+}
+
+/* 即将上线区域 */
+.coming-soon {
+  background: rgba(255,255,255,0.02);
+  border: 2rpx dashed rgba(107,114,128,0.3);
+  border-radius: 24rpx;
+  padding: 40rpx 36rpx;
+  text-align: center;
+
+  .coming-title {
+    display: block;
+    font-size: 26rpx;
+    color: #6b7280;
+    margin-bottom: 12rpx;
+  }
+
+  .coming-desc {
+    display: block;
+    font-size: 22rpx;
+    color: #4b5563;
+    margin-bottom: 32rpx;
+    line-height: 1.6;
+  }
+}
+
+.coming-dots {
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+}
+
+.coming-dot-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.coming-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: rgba(107,114,128,0.4);
+}
+
+.coming-dot-label {
+  font-size: 20rpx;
+  color: #4b5563;
+}

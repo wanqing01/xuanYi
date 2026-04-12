@@ -4,8 +4,8 @@ import './index.scss'
 
 export default function Index() {
   useLoad(() => {
-    // 自动跳转到易经页面（tabBar 首页）
-    Taro.switchTab({ url: '/pages/yijing/index' })
+    // 跳转到占卜页（tabBar 首页）
+    Taro.switchTab({ url: '/pages/divination/index' })
   })
 
   return (
